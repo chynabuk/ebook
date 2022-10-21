@@ -38,6 +38,9 @@ public class User extends BaseEntity implements GrantedAuthority {
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
+    @OneToMany(mappedBy = "user")
+    private List<Favourite> favourites;
+
     @Override
     public String getAuthority() {
         return role.name();

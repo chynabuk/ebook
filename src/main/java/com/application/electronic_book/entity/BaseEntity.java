@@ -2,11 +2,14 @@ package com.application.electronic_book.entity;
 
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @MappedSuperclass
 public class BaseEntity {

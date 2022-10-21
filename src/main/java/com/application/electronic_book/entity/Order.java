@@ -1,17 +1,16 @@
 package com.application.electronic_book.entity;
 
 import com.application.electronic_book.enums.OrderStatus;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "orders")
-@Data
+@Table(name = "book_orders")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order extends BaseEntity{

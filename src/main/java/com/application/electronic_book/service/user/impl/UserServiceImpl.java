@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
         User user = User.builder()
                 .email(userRegistrationModel.getEmail())
-//                .password(encoder.encode(userRegistrationModel.getPassword()))
+                .password(encoder.encode(userRegistrationModel.getPassword()))
                 .phone(userRegistrationModel.getPhone())
                 .fullName(userRegistrationModel.getFullName())
                 .group(group)

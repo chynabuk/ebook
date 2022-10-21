@@ -20,7 +20,7 @@ public class BookModel {
     private String description;
     private Integer amount;
     private String img;
-    private Long authorId;
-    private Long publisherId;
-    private Long categoryId;
+    private String authorName;
+    private String publisherName;
+    private String categoryName;
 }

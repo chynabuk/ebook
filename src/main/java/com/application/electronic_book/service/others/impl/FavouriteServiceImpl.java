@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class FavouriteServiceImpl implements FavouriteService {
-    private final FavouriteRepository favouriteRepository;
     private final UserRepository userRepository;
     private final UserService userService;
     private final BookService bookService;

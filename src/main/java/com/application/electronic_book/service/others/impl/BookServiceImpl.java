@@ -27,9 +27,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
-    private final CategoryService categoryService;
-    private final PublisherService publisherService;
-    private final AuthorService authorService;
 
     private final CategoryRepository categoryRepository;
     private final AuthorRepository authorRepository;
@@ -44,14 +41,17 @@ public class BookServiceImpl implements BookService {
         if (category == null){
             category = new Category();
             category.setName(bookModel.getCategoryName());
+            categoryRepository.save(category);
         }
         if (publisher == null){
             publisher = new Publisher();
             publisher.setName(bookModel.getPublisherName());
+            publisherRepository.save(publisher);
         }
         if (author == null){
             author = new Author();
             author.setFullName(bookModel.getAuthorName());
+            authorRepository.save(author);
         }
 
         Book book = Book.builder()

@@ -6,6 +6,7 @@ import com.application.electronic_book.service.others.GroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PostUpdate;
 import java.util.List;
 
 @RestController
@@ -27,6 +28,16 @@ public class GroupController {
     @DeleteMapping("/{id}")
     public Response<GroupModel> deleteGroup(@PathVariable("id") Long id){
         return new Response<>(groupService.delete(id));
+    }
+
+    @GetMapping("/{id}")
+    public Response<GroupModel> getById(@PathVariable("id") Long id){
+        return new Response<>(groupService.getById(id));
+    }
+
+    @PutMapping
+    public Response<GroupModel> update(@RequestBody GroupModel groupModel){
+        return new Response<>(groupService.update(groupModel));
     }
 
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -65,16 +66,21 @@ public class FavouriteServiceImpl implements FavouriteService {
 
     @Override
     public List<FavouriteModel> getAll() {
+
         return null;
     }
 
     @Override
-    public FavouriteModel toModel(Favourite favourite) {
-        return null;
+    public FavouriteModel toModel(User user) {
+        List<Book> favourites = user.getFavourites();
+        return new FavouriteModel(
+                user.getId(), favourites.stream().map(book -> bookService.toModel(book)).collect(Collectors.toList()));
     }
 
     @Override
     public FavouriteModel update(FavouriteModel favouriteModel) {
+
         return null;
+
     }
 }

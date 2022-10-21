@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -65,7 +66,10 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookModel> getAll() {
-        return null;
+        return bookRepository.findAll()
+                .stream()
+                .map(book -> toModel(book))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -85,7 +89,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookModel update(BookModel bookModel) {
-        return null;
+        Book book = getEntityById(bookModel.getId());
+        if(book==null){
+            throw new EBookException("Book with ID " +bookModel.getId() + " was not found!");
+        }
+        bookRepository.save(book);
+        return bookModel;
     }
 
     @Override

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -49,7 +50,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryModel> getAll() {
-        return null;
+        return categoryRepository.findAll()
+                .stream()
+                .map(category -> toModel(category))
+                .collect(Collectors.toList());
     }
 
     @Override

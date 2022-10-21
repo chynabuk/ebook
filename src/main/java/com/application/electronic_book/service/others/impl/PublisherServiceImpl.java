@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -46,7 +47,10 @@ public class PublisherServiceImpl implements PublisherService {
 
     @Override
     public List<PublisherModel> getAll() {
-        return null;
+        return publisherRepository.findAll()
+                .stream()
+                .map(publisher -> toModel(publisher))
+                .collect(Collectors.toList());
     }
 
     @Override

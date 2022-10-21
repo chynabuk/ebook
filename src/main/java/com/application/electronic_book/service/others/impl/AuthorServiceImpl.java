@@ -1,6 +1,7 @@
 package com.application.electronic_book.service.others.impl;
 
 import com.application.electronic_book.entity.Author;
+import com.application.electronic_book.exception.AuthorException;
 import com.application.electronic_book.exception.EBookException;
 import com.application.electronic_book.model.others.AuthorModel;
 import com.application.electronic_book.repository.AuthorRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -48,7 +50,10 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public List<AuthorModel> getAll() {
-        return null;
+        return authorRepository.findAll()
+                .stream()
+                .map(author -> toModel(author))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -58,6 +63,11 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorModel update(AuthorModel authorModel) {
-        return null;
+        Author author = getEntityById(authorModel.getId());
+        if(author==null){
+            throw new AuthorException("Author was not found!");
+        }
+        authorRepository.save(author);
+        return authorModel;
     }
 }

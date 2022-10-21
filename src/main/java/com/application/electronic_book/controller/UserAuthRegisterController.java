@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserAuthRegisterController {
     private final UserService userService;
-//
-//    @PostMapping("/login")
-//    public Response<UserTokenModel> login(@RequestBody UserAuthModel userAuthModel){
-//        return new Response<>(userService.login(userAuthModel));
-//    }
+
+    @PostMapping("/login")
+    public Response<UserTokenModel> login(@RequestBody UserAuthModel userAuthModel){
+        return new Response<>(userService.login(userAuthModel));
+    }
 
     @PostMapping("/register")
     public Response<UserModel> login(@RequestBody UserRegistrationModel userRegistrationModel){

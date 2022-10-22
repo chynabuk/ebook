@@ -24,19 +24,19 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(
             nativeQuery = true,
-            value = "select * from books inner join categories on category_id = category.id order by categories.name"
+            value = "select * from books inner join categories on books.category_id = category.id order by categories.name"
     )
     List<Book> getBooksSortedByCategoryName();
 
     @Query(
             nativeQuery = true,
-            value = "select * from books inner join categories on category_id = categories.id order by categories.name desc "
+            value = "select * from books inner join categories on books.category_id = categories.id order by categories.name desc "
     )
     List<Book> getBooksSortedByCategoryNameDesc();
 
     @Query(
             nativeQuery = true,
-            value = "select * from books inner join authors on author_id = authors.id order by authors.fullName"
+            value = "select * from books inner join authors on books.author_id = authors.id order by authors.fullName"
     )
     List<Book> getBooksSortedByAuthorName();
 

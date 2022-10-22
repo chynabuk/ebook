@@ -1,6 +1,5 @@
 package com.application.electronic_book.model.others;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

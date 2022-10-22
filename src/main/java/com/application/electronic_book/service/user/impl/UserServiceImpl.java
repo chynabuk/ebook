@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
         UserDetailModel userDetailModel = (UserDetailModel) authentication.getPrincipal();
         String jwtToken = jwtUtil.generateJwtToken(userDetailModel);
 
-        return new UserTokenModel(userDetailModel.getUsername(), jwtToken);
+        return new UserTokenModel(userDetailModel.getUser().getId(), userDetailModel.getUsername(), jwtToken);
     }
 
     @Override

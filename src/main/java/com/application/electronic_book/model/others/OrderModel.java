@@ -1,4 +1,17 @@
 package com.application.electronic_book.model.others;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Data
+@AllArgsConstructor
 public class OrderModel {
+    private Long userId;
+    private Long bookId;
+    private Integer dayAmount;
+    private String token;
+    private LocalDateTime tokenExpirationDate;
 }

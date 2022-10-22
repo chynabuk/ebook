@@ -10,7 +10,7 @@ import javax.persistence.PostUpdate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/group")
+@RequestMapping("/group")
 @RequiredArgsConstructor
 public class GroupController {
     private final GroupService groupService;
@@ -20,7 +20,7 @@ public class GroupController {
         return new Response<>(groupService.create(groupModel));
     }
 
-    @GetMapping
+    @GetMapping("/get-all")
     public Response<List<GroupModel>> getAll(){
         return new Response<>(groupService.getAll());
     }

@@ -30,7 +30,7 @@ public class FavouriteServiceImpl implements FavouriteService {
         User user = userService.getEntityById(favouriteModel.getUserId());
 
         for (BookModel book : favouriteModel.getBookModels()){
-            user.getFavourites().add(bookService.toEntity(book));
+            user.getFavourites().add(bookService.getEntityById(book.getId()));
         }
 
         userRepository.save(user);
@@ -60,7 +60,9 @@ public class FavouriteServiceImpl implements FavouriteService {
 
     @Override
     public FavouriteModel getById(Long id) {
-        return null;
+        User user = userService.getEntityById(id);
+        FavouriteModel favouriteModel = new FavouriteModel(id, user.getFavourites().stream().map(book -> bookService.toModel(book)).collect(Collectors.toList()));
+        return favouriteModel;
     }
 
     @Override

@@ -53,6 +53,8 @@ public class OrderServiceImpl implements OrderService {
 
         orderRepository.save(order);
 
+        orderModel.setToken(order.getToken());
+
         orderModel.setId(order.getId());
 
         return orderModel;

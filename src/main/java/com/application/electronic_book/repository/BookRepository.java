@@ -36,7 +36,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(
             nativeQuery = true,
-            value = "select * from books inner join authors on author_id = authors.id order by authors.name"
+            value = "select * from books inner join authors on author_id = authors.id order by authors.fullName"
     )
     List<Book> getBooksSortedByAuthorName();
 
